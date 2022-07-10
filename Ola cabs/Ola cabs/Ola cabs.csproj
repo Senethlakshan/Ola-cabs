@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53ABCE56-A5AB-48A5-BF77-1CCD6AF4E333}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Ola_cabs</RootNamespace>
+    <AssemblyName>Ola cabs</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HandyControl, Version=3.3.0.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b, processorArchitecture=MSIL">
+      <HintPath>..\packages\HandyControls.3.3.8.1\lib\net472\HandyControl.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.0.4.3, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.0.4\lib\net452\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.3.0.3, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.3.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AdminLogin.xaml.cs">
+      <DependentUpon>AdminLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConvertImage.cs" />
+    <Compile Include="Display_bill.xaml.cs">
+      <DependentUpon>Display_bill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DriverDashbord.xaml.cs">
+      <DependentUpon>DriverDashbord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="driverdashbord1.xaml.cs">
+      <DependentUpon>driverdashbord1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Driver_info.xaml.cs">
+      <DependentUpon>Driver_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPasswordDriver.xaml.cs">
+      <DependentUpon>ForgetPasswordDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPasswordUser.xaml.cs">
+      <DependentUpon>ForgetPasswordUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Request trip.xaml.cs">
+      <DependentUpon>Request trip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignupDriver.xaml.cs">
+      <DependentUpon>SignupDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignupUser.xaml.cs">
+      <DependentUpon>SignupUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sms.Designer.cs">
+      <DependentUpon>sms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Uc1Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uc1Form1.Designer.cs">
+      <DependentUpon>Uc1Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl2.xaml.cs">
+      <DependentUpon>UserControl2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl3.xaml.cs">
+      <DependentUpon>UserControl3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl4.xaml.cs">
+      <DependentUpon>UserControl4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl5.xaml.cs">
+      <DependentUpon>UserControl5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl6.xaml.cs">
+      <DependentUpon>UserControl6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl7.xaml.cs">
+      <DependentUpon>UserControl7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserDashbord.xaml.cs">
+      <DependentUpon>UserDashbord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_info.xaml.cs">
+      <DependentUpon>User_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_ride.cs" />
+    <Page Include="AdminLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Display_bill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DriverDashbord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="driverdashbord1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Driver_info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ForgetPasswordDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ForgetPasswordUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoginDriver.xaml.cs">
+      <DependentUpon>LoginDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUser.xaml.cs">
+      <DependentUpon>LoginUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Request trip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignupDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignupUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserDashbord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sms.resx">
+      <DependentUpon>sms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uc1Form1.resx">
+      <DependentUpon>Uc1Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CHARMING MAN.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add_a_heading__9_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add a heading %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="car %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="taxi-driver %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add a heading %2810%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add a heading %289%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add a heading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inspirational Art of the Week #25 - Vectorgraphit - Blog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="1fab0946b1de5b9e965eb764501a4248.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="0bb9cbeb8683e69e81017a5d21d3a0da.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bd08f6de4ee2838f28a506f4f0a44c78.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="3f5f1be7d03a5b057f67f99697b8828a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="466ddc4f7ed4b4240246ae13a8aaf5cf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ebc42f14e55527ac19c7304f54cb3ce0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="52dc8238879c1ba7f84f5c8748320e00.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="0f59b9cd9a7b4ad91a0013379576078e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="d73266875285073003909f83628bd550.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="8be39e49adc1e03847758b4d4eb1abdb.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="c3d166415044a6adc4fc5216b983231a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="55524b3cd0e0782d407658fad2aeb794.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ea06ff188085acfab02f046996afbe0e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="a223fa673cf87e8ee61405e270c3205a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="18796d57b160cfc5a9b22a69c3b27c7f.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="aaa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="33bba895502f9bc3754573891dfd1b1d.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dcd.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add a heading %2814%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="4abf693aa218823b934868aaaf4118e9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Download Colorful Pattern Of Young People for free.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="78a6e1e79dd007afba7bc3b758530533.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="26a8d4bbe1225fa01721c4d59fa2b06f.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="avatar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="avatar %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="5462430b9bb02fe2f4b408ad0ab7992f.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wdwdk.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="f342a18010c2fc71cbf30e8a3e7eeb24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add a heading %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="activy_bicycle.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="c5eb1b6e7d05dac97ba985e30167b476.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="e7a0a9cb68791a62e66f93d64c3accbf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cloud-computing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="upload %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hatchback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="taxi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="setup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="booking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="traveler-with-a-suitcase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="add-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="537b4f714730f50dd25d320dcd4e104a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-lock.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="0ab798457513fbbeb9c1e2bc83247a38.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="home %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="home %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="save-instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="writing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="next %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="notification-bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\distance %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="taxi %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="suv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="van.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="box-truck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pickup-truck %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="rickshaw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="scooter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pin %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="covid info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wash your hands frequently Wear a mask at all times Face shields required in certain areas Observe social distancing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bhehvbed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="power-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Dental Clinic Location Map UI Instagram Post.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="magnifying-glass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="navigation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="magnifying-glass%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\distance %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="credit-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user-avatar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user-avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="upload.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>

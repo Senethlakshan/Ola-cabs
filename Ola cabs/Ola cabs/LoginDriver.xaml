@@ -1,0 +1,381 @@
+﻿<Window x:Class="Ola_cabs.LoginDriver"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:Ola_cabs"
+        mc:Ignorable="d"
+        Title="LoginDriver" Height="550" Width="850" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid HorizontalAlignment="Left" Height="56.038" VerticalAlignment="Top" Width="232.5">
+                                    <Rectangle Fill="#FF00FF80" HorizontalAlignment="Left" Height="56.038" RadiusY="30" RadiusX="30" Stroke="{x:Null}" VerticalAlignment="Top" Width="232.5"/>
+                                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sign in" VerticalAlignment="Top" Margin="55.5,4.648,0,0" FontSize="36" FontWeight="Bold" FontFamily="Century Gothic" Foreground="White"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid HorizontalAlignment="Left" Height="43.5" VerticalAlignment="Top" Width="124.5">
+                                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Forget password ?" VerticalAlignment="Top" Margin="0,10,0,0" Height="23.5" Width="124.5" FontSize="14" FontWeight="Bold" FontFamily="Century Gothic" Foreground="#FF8B00DA"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyle3" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="42">
+                                    <Ellipse Fill="#FF00FF80" HorizontalAlignment="Left" Height="30" Stroke="{x:Null}" VerticalAlignment="Top" Width="32" Margin="10,0,0,0"/>
+                                    <Rectangle HorizontalAlignment="Left" Height="18" Stroke="{x:Null}" VerticalAlignment="Top" Width="17.5" Margin="17.25,5.75,0,0">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="delete.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyle4" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid HorizontalAlignment="Left" Height="43.5" VerticalAlignment="Top" Width="124.5">
+                                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Forget password ?" VerticalAlignment="Top" Margin="0,10,0,0" Height="23.5" Width="124.5" FontSize="14" FontWeight="Bold" FontFamily="Century Gothic" Foreground="#FF8B00DA"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,297,441">
+        <Rectangle HorizontalAlignment="Left" Height="269.5" VerticalAlignment="Top" Width="277" Margin="336,-49.5,-60,-111">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Add a heading (2).png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <hc:TextBox x:Name="Username1" hc:InfoElement.Placeholder="Username"
+               hc:InfoElement.Title="Login" Margin="359.653,187.215,-238.636,-177.236" ShowClearButton="True" FontWeight="Bold" FontSize="20" FontFamily="Century Gothic" BorderBrush="#FF00FF74" BorderThickness="4"/>
+        <hc:PasswordBox x:Name="Password1" hc:InfoElement.Placeholder="Password"
+               Margin="359.653,291.236,-238.636,-252.496" ShowClearButton="True"  ShowEyeButton="True" FontWeight="Bold" FontSize="20" FontFamily="Century Gothic" BorderBrush="#FF00FF74" BorderThickness="4"/>
+        <Button x:Name="Sign_in_btn" Content="Login" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="456,381,-135,-328" Height="56" Style="{DynamicResource ButtonStyle1}" Click="Sign_in_btn_Click"/>
+        <Button Content="Forget password?" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="510,442,-82,-377" Height="44" Style="{DynamicResource ButtonStyle4}" Click="Button_Click_1"/>
+        <Button Content="Sign up&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79.667" Margin="590,506.718,-116.667,-433.44" FontWeight="Bold" FontFamily="Century Gothic" FontSize="14" BorderBrush="#FF00FF46" BorderThickness="2" Height="35.722" Click="Button_Click"/>
+        <Button x:Name="Logindriver_close" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="42" Margin="795,13.5,-284,0" Style="{DynamicResource ButtonStyle3}" Click="Logindriver_close_Click"/>
+        <Ellipse HorizontalAlignment="Left" Height="327.488" VerticalAlignment="Top" Width="323.486" Margin="12.514,124.512,0,-343" Fill="#FF00FF68"/>
+        <Rectangle HorizontalAlignment="Left" Height="449.265" VerticalAlignment="Top" Width="478.748" Margin="-47.694,57.698,0,-397.963">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Add a heading (10).png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Don't have an account?" VerticalAlignment="Top" Margin="449.783,522.54,-32,-427.94" Width="135.217" FontWeight="Bold" FontFamily="Centaury gothic"/>
+    </Grid>
+</Window>

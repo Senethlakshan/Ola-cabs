@@ -1,0 +1,751 @@
+﻿<UserControl x:Class="Ola_cabs.UserControl4"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:hc="https://handyorg.github.io/handycontrol" 
+             xmlns:local="clr-namespace:Ola_cabs"
+             mc:Ignorable="d" 
+             d:DesignHeight="534" d:DesignWidth="822">
+    <UserControl.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid HorizontalAlignment="Left" Height="46.5" VerticalAlignment="Top" Width="192">
+                                    <Rectangle HorizontalAlignment="Left" Height="46.5" VerticalAlignment="Top" Width="201.5" Margin="0,0,-9.5,0" RadiusY="10.864" RadiusX="10.864" Fill="#FF003AFF"/>
+                                    <Label Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Width="149.263" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="25" FontFamily="Century Gothic" Foreground="White"/>
+                                    <Rectangle HorizontalAlignment="Left" Height="26.5" RadiusY="0" RadiusX="0" VerticalAlignment="Top" Width="28.68" Margin="133.833,10,0,0">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="magnifying-glass(1).png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type hc:TextBox}">
+            <Setter Property="IsError" Value="{Binding (Validation.HasError), RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type hc:TextBox}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="StoryboardHidden">
+                                <ThicknessAnimation Duration="0" To="9,0,0,4" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                            </Storyboard>
+                            <Storyboard x:Key="StoryboardShow">
+                                <ThicknessAnimation Duration="0:0:0.2" To="9,0,0,-18" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition MinHeight="{Binding (hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+                                    <RowDefinition.Height>
+                                        <Binding Path="(hc:InfoElement.ContentHeight)" RelativeSource="{RelativeSource TemplatedParent}">
+                                            <Binding.Converter>
+                                                <hc:Double2GridLengthConverter/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </RowDefinition.Height>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="TextBlockError" Foreground="{DynamicResource DangerBrush}" FontSize="12" Margin="9,0,0,4" Grid.Row="1" Text="{TemplateBinding ErrorStr}" VerticalAlignment="Bottom"/>
+                            <DockPanel HorizontalAlignment="{Binding (hc:TitleElement.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}}" LastChildFill="True" Margin="{TemplateBinding Padding}" Grid.Row="0">
+                                <DockPanel.Visibility>
+                                    <Binding Path="(hc:TitleElement.Title)" RelativeSource="{RelativeSource TemplatedParent}">
+                                        <Binding.Converter>
+                                            <hc:String2VisibilityConverter/>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </DockPanel.Visibility>
+                                <ContentPresenter Content="{Binding (hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0">
+                                    <ContentPresenter.Visibility>
+                                        <Binding Path="(hc:InfoElement.Necessary)" RelativeSource="{RelativeSource TemplatedParent}">
+                                            <Binding.Converter>
+                                                <BooleanToVisibilityConverter/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </ContentPresenter.Visibility>
+                                </ContentPresenter>
+                                <TextBlock hc:TextBlockAttach.AutoTooltip="True" Margin="1,0" TextWrapping="NoWrap" Text="{Binding (hc:TitleElement.Title), RelativeSource={RelativeSource TemplatedParent}}" ToolTip="{x:Null}" TextTrimming="CharacterEllipsis"/>
+                            </DockPanel>
+                            <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Grid.Row="1" SnapsToDevicePixels="True">
+                                <Grid SnapsToDevicePixels="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" Text="{Binding (hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
+                                                <Style.BasedOn>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                    </Style>
+                                                </Style.BasedOn>
+                                            </Style>
+                                        </TextBlock.Style>
+                                        <TextBlock.Visibility>
+                                            <TemplateBinding Property="Text">
+                                                <TemplateBinding.Converter>
+                                                    <hc:String2VisibilityReConverter/>
+                                                </TemplateBinding.Converter>
+                                            </TemplateBinding>
+                                        </TextBlock.Visibility>
+                                    </TextBlock>
+                                    <ScrollViewer x:Name="PART_ContentHost" Grid.Column="0" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <Button x:Name="ButtonClear" Grid.Column="1" Command="hc:ControlCommands.Clear" Foreground="{Binding BorderBrush, ElementName=templateRoot}" hc:IconElement.Geometry="M7.4038057,6.4038057C7.1478834,6.4038057 6.8919611,6.5014372 6.6966991,6.6966991 6.3061748,7.0872235 6.3061748,7.7203884 6.6966991,8.1109123L10.585787,12 6.6966991,15.889088C6.3061748,16.279612 6.3061748,16.912777 6.6966991,17.303301 7.0872235,17.693825 7.7203879,17.693825 8.1109123,17.303301L12,13.414213 15.889088,17.303301C16.279612,17.693825 16.912777,17.693825 17.303301,17.303301 17.693825,16.912777 17.693825,16.279612 17.303301,15.889088L13.414213,12 17.303301,8.1109123C17.693825,7.7203884 17.693825,7.0872235 17.303301,6.6966991 16.912777,6.3061748 16.279612,6.3061748 15.889088,6.6966991L12,10.585787 8.1109123,6.6966991C7.9156504,6.5014372,7.6597281,6.4038057,7.4038057,6.4038057z M12,0C18.627417,0 24,5.3725829 24,12 24,18.627417 18.627417,24 12,24 5.3725829,24 0,18.627417 0,12 0,5.3725829 5.3725829,0 12,0z" Height="Auto" Margin="0,0,7,0" Padding="0,6" Visibility="Collapsed" Width="16">
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                <Setter Property="hc:BorderElement.CornerRadius" Value="0"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                                <ContentControl HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                    <Path Data="{TemplateBinding hc:IconElement.Geometry}" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding hc:IconElement.Height}" Stretch="Uniform" SnapsToDevicePixels="True" Width="{TemplateBinding hc:IconElement.Width}"/>
+                                                                </ContentControl>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Style.BasedOn>
+                                                    <Style TargetType="{x:Type Button}">
+                                                        <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                                                        <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                                    <hc:SimplePanel>
+                                                                        <Border Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                                            <StackPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Orientation="Horizontal" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                                <Path x:Name="PathMain" Data="{TemplateBinding hc:IconElement.Geometry}" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding hc:IconElement.Height}" Stretch="Uniform" SnapsToDevicePixels="True" Width="{TemplateBinding hc:IconElement.Width}"/>
+                                                                                <ContentPresenter x:Name="ContentPresenterMain" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Margin="6,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </hc:SimplePanel>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="Content" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" TargetName="ContentPresenterMain" Value="Collapsed"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" TargetName="PathMain" Value="Collapsed"/>
+                                                                            <Setter Property="Margin" TargetName="ContentPresenterMain" Value="0"/>
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Style.BasedOn>
+                                                            <Style TargetType="{x:Type ButtonBase}">
+                                                                <Setter Property="Height" Value="30"/>
+                                                                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                                                                <Setter Property="Padding" Value="10,6"/>
+                                                                <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                                                                <Setter Property="BorderThickness" Value="0"/>
+                                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                                                <Style.BasedOn>
+                                                                    <Style TargetType="{x:Type Control}">
+                                                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                                        <Setter Property="FontSize" Value="12"/>
+                                                                        <Setter Property="FocusVisualStyle">
+                                                                            <Setter.Value>
+                                                                                <Style>
+                                                                                    <Setter Property="Control.Template">
+                                                                                        <Setter.Value>
+                                                                                            <ControlTemplate>
+                                                                                                <Rectangle RadiusY="4" RadiusX="4">
+                                                                                                    <Rectangle.Style>
+                                                                                                        <Style TargetType="{x:Type Rectangle}">
+                                                                                                            <Setter Property="Margin" Value="-2"/>
+                                                                                                            <Setter Property="Opacity" Value="0.6"/>
+                                                                                                            <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                                                            <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                                                            <Setter Property="StrokeThickness" Value="2"/>
+                                                                                                            <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                                                        </Style>
+                                                                                                    </Rectangle.Style>
+                                                                                                </Rectangle>
+                                                                                            </ControlTemplate>
+                                                                                        </Setter.Value>
+                                                                                    </Setter>
+                                                                                </Style>
+                                                                            </Setter.Value>
+                                                                        </Setter>
+                                                                    </Style>
+                                                                </Style.BasedOn>
+                                                            </Style>
+                                                        </Style.BasedOn>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Opacity" Value="0.9"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsPressed" Value="True">
+                                                                <Setter Property="Opacity" Value="0.6"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Opacity" Value="0.4"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Style.BasedOn>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="templateRoot" Value="0.4"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" SourceName="templateRoot" Value="True">
+                                <Setter Property="Border.BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" SourceName="templateRoot" Value="True"/>
+                                    <Condition Property="ShowClearButton" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="ButtonClear" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsError" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation Duration="0:0:0.2" To="9,0,0,-18" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation Duration="0" To="9,0,0,4" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="hc:InfoElement.Symbol" Value="●"/>
+                    <Setter Property="hc:InfoElement.ContentHeight" Value="NaN"/>
+                    <Setter Property="hc:InfoElement.MinContentHeight" Value="30"/>
+                    <Setter Property="Height" Value="Auto"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition MinHeight="{Binding (hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+                                            <RowDefinition.Height>
+                                                <Binding Path="(hc:InfoElement.ContentHeight)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                    <Binding.Converter>
+                                                        <hc:Double2GridLengthConverter/>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </RowDefinition.Height>
+                                        </RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <DockPanel HorizontalAlignment="{Binding (hc:TitleElement.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}}" LastChildFill="True" Margin="{TemplateBinding Padding}">
+                                        <DockPanel.Visibility>
+                                            <Binding Path="(hc:TitleElement.Title)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                <Binding.Converter>
+                                                    <hc:String2VisibilityConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </DockPanel.Visibility>
+                                        <ContentPresenter Content="{Binding (hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0">
+                                            <ContentPresenter.Visibility>
+                                                <Binding Path="(hc:InfoElement.Necessary)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                    <Binding.Converter>
+                                                        <BooleanToVisibilityConverter/>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </ContentPresenter.Visibility>
+                                        </ContentPresenter>
+                                        <TextBlock hc:TextBlockAttach.AutoTooltip="True" Margin="1,0" TextWrapping="NoWrap" Text="{Binding (hc:TitleElement.Title), RelativeSource={RelativeSource TemplatedParent}}" ToolTip="{x:Null}" TextTrimming="CharacterEllipsis"/>
+                                    </DockPanel>
+                                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Grid.Row="1" SnapsToDevicePixels="True"/>
+                                    <TextBlock x:Name="Placeholder" HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" Padding="1" Grid.Row="1" Text="{Binding (hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
+                                                <Style.BasedOn>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                    </Style>
+                                                </Style.BasedOn>
+                                            </Style>
+                                        </TextBlock.Style>
+                                        <TextBlock.Visibility>
+                                            <TemplateBinding Property="Text">
+                                                <TemplateBinding.Converter>
+                                                    <hc:String2VisibilityReConverter/>
+                                                </TemplateBinding.Converter>
+                                            </TemplateBinding>
+                                        </TextBlock.Visibility>
+                                    </TextBlock>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-1,1" Padding="{TemplateBinding Padding}" Grid.Row="1" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                                        <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4"/>
+                                        <Setter Property="Opacity" TargetName="Placeholder" Value="0.4"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" SourceName="PART_ContentHost" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="MinHeight" Value="30"/>
+                            <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}"/>
+                            <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            <Setter Property="AllowDrop" Value="True"/>
+                            <Setter Property="Padding" Value="8,6"/>
+                            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type TextBox}">
+                                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                            </Trigger>
+                                            <Trigger Property="IsFocused" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="hc:TitleElement.TitlePlacement" Value="Left">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type TextBox}">
+                                        <Grid Height="{Binding (hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding (hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="{Binding (hc:TitleElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <DockPanel HorizontalAlignment="{Binding (hc:TitleElement.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}}" LastChildFill="True" Margin="0,7,6,7" VerticalAlignment="{Binding (hc:TitleElement.VerticalAlignment), RelativeSource={RelativeSource TemplatedParent}}">
+                                                <DockPanel.Visibility>
+                                                    <Binding Path="(hc:TitleElement.Title)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                        <Binding.Converter>
+                                                            <hc:String2VisibilityConverter/>
+                                                        </Binding.Converter>
+                                                    </Binding>
+                                                </DockPanel.Visibility>
+                                                <ContentPresenter Content="{Binding (hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0">
+                                                    <ContentPresenter.Visibility>
+                                                        <Binding Path="(hc:InfoElement.Necessary)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                            <Binding.Converter>
+                                                                <BooleanToVisibilityConverter/>
+                                                            </Binding.Converter>
+                                                        </Binding>
+                                                    </ContentPresenter.Visibility>
+                                                </ContentPresenter>
+                                                <TextBlock hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" Text="{Binding (hc:TitleElement.Title), RelativeSource={RelativeSource TemplatedParent}}" ToolTip="{x:Null}" TextTrimming="CharacterEllipsis"/>
+                                            </DockPanel>
+                                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="1" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True"/>
+                                            <TextBlock x:Name="Placeholder" Grid.Column="1" HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" Padding="1" Text="{Binding (hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
+                                                        <Style.BasedOn>
+                                                            <Style TargetType="{x:Type TextBlock}">
+                                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                            </Style>
+                                                        </Style.BasedOn>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                                <TextBlock.Visibility>
+                                                    <TemplateBinding Property="Text">
+                                                        <TemplateBinding.Converter>
+                                                            <hc:String2VisibilityReConverter/>
+                                                        </TemplateBinding.Converter>
+                                                    </TemplateBinding>
+                                                </TextBlock.Visibility>
+                                            </TextBlock>
+                                            <ScrollViewer x:Name="PART_ContentHost" Grid.Column="1" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-1,1" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Hidden"/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                                                <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4"/>
+                                                <Setter Property="Opacity" TargetName="Placeholder" Value="0.4"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" SourceName="PART_ContentHost" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                            </Trigger>
+                                            <Trigger Property="IsFocused" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Width" Value="Auto"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="hc:TitleElement.TitlePlacement" Value="Left">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type hc:TextBox}">
+                                <ControlTemplate.Resources>
+                                    <Storyboard x:Key="StoryboardHidden">
+                                        <ThicknessAnimation Duration="0" To="9,0,0,4" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                                    </Storyboard>
+                                    <Storyboard x:Key="StoryboardShow">
+                                        <ThicknessAnimation Duration="0:0:0.2" To="9,0,0,-18" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                                    </Storyboard>
+                                </ControlTemplate.Resources>
+                                <Grid Height="{Binding (hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding (hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="{Binding (hc:TitleElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="TextBlockError" Grid.Column="1" Foreground="{DynamicResource DangerBrush}" FontSize="12" Margin="9,0,0,4" Text="{TemplateBinding ErrorStr}" VerticalAlignment="Bottom"/>
+                                    <DockPanel Grid.Column="0" HorizontalAlignment="{Binding (hc:TitleElement.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}}" LastChildFill="True" Margin="0,7,6,7" VerticalAlignment="{Binding (hc:TitleElement.VerticalAlignment), RelativeSource={RelativeSource TemplatedParent}}">
+                                        <DockPanel.Visibility>
+                                            <Binding Path="(hc:TitleElement.Title)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                <Binding.Converter>
+                                                    <hc:String2VisibilityConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </DockPanel.Visibility>
+                                        <ContentPresenter Content="{Binding (hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0">
+                                            <ContentPresenter.Visibility>
+                                                <Binding Path="(hc:InfoElement.Necessary)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                    <Binding.Converter>
+                                                        <BooleanToVisibilityConverter/>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </ContentPresenter.Visibility>
+                                        </ContentPresenter>
+                                        <TextBlock hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" Text="{Binding (hc:TitleElement.Title), RelativeSource={RelativeSource TemplatedParent}}" ToolTip="{x:Null}" TextTrimming="CharacterEllipsis"/>
+                                    </DockPanel>
+                                    <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="1" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
+                                        <Grid SnapsToDevicePixels="True">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" Text="{Binding (hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
+                                                        <Style.BasedOn>
+                                                            <Style TargetType="{x:Type TextBlock}">
+                                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                            </Style>
+                                                        </Style.BasedOn>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                                <TextBlock.Visibility>
+                                                    <TemplateBinding Property="Text">
+                                                        <TemplateBinding.Converter>
+                                                            <hc:String2VisibilityReConverter/>
+                                                        </TemplateBinding.Converter>
+                                                    </TemplateBinding>
+                                                </TextBlock.Visibility>
+                                            </TextBlock>
+                                            <ScrollViewer x:Name="PART_ContentHost" Grid.Column="0" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            <Button x:Name="ButtonClear" Grid.Column="1" Command="hc:ControlCommands.Clear" Foreground="{Binding BorderBrush, ElementName=templateRoot}" hc:IconElement.Geometry="M7.4038057,6.4038057C7.1478834,6.4038057 6.8919611,6.5014372 6.6966991,6.6966991 6.3061748,7.0872235 6.3061748,7.7203884 6.6966991,8.1109123L10.585787,12 6.6966991,15.889088C6.3061748,16.279612 6.3061748,16.912777 6.6966991,17.303301 7.0872235,17.693825 7.7203879,17.693825 8.1109123,17.303301L12,13.414213 15.889088,17.303301C16.279612,17.693825 16.912777,17.693825 17.303301,17.303301 17.693825,16.912777 17.693825,16.279612 17.303301,15.889088L13.414213,12 17.303301,8.1109123C17.693825,7.7203884 17.693825,7.0872235 17.303301,6.6966991 16.912777,6.3061748 16.279612,6.3061748 15.889088,6.6966991L12,10.585787 8.1109123,6.6966991C7.9156504,6.5014372,7.6597281,6.4038057,7.4038057,6.4038057z M12,0C18.627417,0 24,5.3725829 24,12 24,18.627417 18.627417,24 12,24 5.3725829,24 0,18.627417 0,12 0,5.3725829 5.3725829,0 12,0z" Height="Auto" Margin="0,0,7,0" Padding="0,6" Visibility="Collapsed" Width="16">
+                                                <Button.Style>
+                                                    <Style TargetType="{x:Type Button}">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                        <Setter Property="hc:BorderElement.CornerRadius" Value="0"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                                        <ContentControl HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                            <Path Data="{TemplateBinding hc:IconElement.Geometry}" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding hc:IconElement.Height}" Stretch="Uniform" SnapsToDevicePixels="True" Width="{TemplateBinding hc:IconElement.Width}"/>
+                                                                        </ContentControl>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Style.BasedOn>
+                                                            <Style TargetType="{x:Type Button}">
+                                                                <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                                                                <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                                            <hc:SimplePanel>
+                                                                                <Border Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                                                    <StackPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Orientation="Horizontal" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                                        <Path x:Name="PathMain" Data="{TemplateBinding hc:IconElement.Geometry}" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding hc:IconElement.Height}" Stretch="Uniform" SnapsToDevicePixels="True" Width="{TemplateBinding hc:IconElement.Width}"/>
+                                                                                        <ContentPresenter x:Name="ContentPresenterMain" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Margin="6,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                                                                    </StackPanel>
+                                                                                </Border>
+                                                                            </hc:SimplePanel>
+                                                                            <ControlTemplate.Triggers>
+                                                                                <Trigger Property="Content" Value="{x:Null}">
+                                                                                    <Setter Property="Visibility" TargetName="ContentPresenterMain" Value="Collapsed"/>
+                                                                                </Trigger>
+                                                                                <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}">
+                                                                                    <Setter Property="Visibility" TargetName="PathMain" Value="Collapsed"/>
+                                                                                    <Setter Property="Margin" TargetName="ContentPresenterMain" Value="0"/>
+                                                                                </Trigger>
+                                                                            </ControlTemplate.Triggers>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                                <Style.BasedOn>
+                                                                    <Style TargetType="{x:Type ButtonBase}">
+                                                                        <Setter Property="Height" Value="30"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                                                                        <Setter Property="Padding" Value="10,6"/>
+                                                                        <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                                                        <Style.BasedOn>
+                                                                            <Style TargetType="{x:Type Control}">
+                                                                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                                                <Setter Property="FontSize" Value="12"/>
+                                                                                <Setter Property="FocusVisualStyle">
+                                                                                    <Setter.Value>
+                                                                                        <Style>
+                                                                                            <Setter Property="Control.Template">
+                                                                                                <Setter.Value>
+                                                                                                    <ControlTemplate>
+                                                                                                        <Rectangle RadiusY="4" RadiusX="4">
+                                                                                                            <Rectangle.Style>
+                                                                                                                <Style TargetType="{x:Type Rectangle}">
+                                                                                                                    <Setter Property="Margin" Value="-2"/>
+                                                                                                                    <Setter Property="Opacity" Value="0.6"/>
+                                                                                                                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                                                                    <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                                                                    <Setter Property="StrokeThickness" Value="2"/>
+                                                                                                                    <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                                                                </Style>
+                                                                                                            </Rectangle.Style>
+                                                                                                        </Rectangle>
+                                                                                                    </ControlTemplate>
+                                                                                                </Setter.Value>
+                                                                                            </Setter>
+                                                                                        </Style>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                            </Style>
+                                                                        </Style.BasedOn>
+                                                                    </Style>
+                                                                </Style.BasedOn>
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Opacity" Value="0.9"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsPressed" Value="True">
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Opacity" Value="0.4"/>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Style.BasedOn>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" TargetName="templateRoot" Value="0.4"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" SourceName="templateRoot" Value="True">
+                                        <Setter Property="Border.BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsMouseOver" SourceName="templateRoot" Value="True"/>
+                                            <Condition Property="ShowClearButton" Value="True"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Visibility" TargetName="ButtonClear" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsError" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ThicknessAnimation Duration="0:0:0.2" To="9,0,0,-18" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ThicknessAnimation Duration="0" To="9,0,0,4" Storyboard.TargetProperty="Margin" Storyboard.TargetName="TextBlockError"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Width" Value="Auto"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Rectangle x:Name="_1" HorizontalAlignment="Left" Height="514" Margin="30.802,17.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="770.645" RadiusY="32.679" RadiusX="32.679">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF200078" Offset="0.944"/>
+                    <GradientStop Color="#FF5F23FF"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="_2" HorizontalAlignment="Left" Height="467.88" RadiusY="32.679" RadiusX="32.679" VerticalAlignment="Top" Width="459.592" Margin="183.636,40.5,0,0">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Dental Clinic Location Map UI Instagram Post.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button x:Name="search" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="192" Margin="308.136,444,0,0" Height="46.5" Style="{DynamicResource ButtonStyle1}"/>
+        <hc:TextBox x:Name="locate" hc:InfoElement.Placeholder="Find location" ShowClearButton="True" Margin="253.5,58.5,261,424.5" BorderBrush="#FF003AFF" BorderThickness="3" Style="{DynamicResource TextBoxStyle1}" />
+    </Grid>
+</UserControl>
